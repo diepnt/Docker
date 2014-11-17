@@ -27,5 +27,10 @@ trước khi build edit file hosts trở tới mysql và keystone vd:
 
 127.0.0.107           localhost
 
+Các service khác tương tự edit hostname theo cấu trúc mạng.
+====
+
+update: Sửa hostname sau khi build.sửa trước ko work.
+
 
 
