@@ -1,8 +1,11 @@
 Docker
 =======
 install docker
+
 git clone https://github.com/diepnt/Docker.git
-docker build -t $service /path to service forder
+
+docker build -t $service /path_to_service_forder
+
 keystone
 =======
 trước khi build edit file hosts trỏ tới mysql vd:
