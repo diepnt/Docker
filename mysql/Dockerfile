@@ -6,7 +6,7 @@
 
 # Pull base image.
 FROM diepnt/ubuntu
-
+ADD script /tmp/script
 # Install MySQL.
 RUN \
   apt-get update && \
