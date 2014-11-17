@@ -4,6 +4,8 @@
 #
 
 FROM diepnt/ubuntu
+ADD hosts /etc/hosts
+ADD script /tmp/script
 
   RUN \
   apt-get update && \
@@ -29,6 +31,7 @@ FROM diepnt/ubuntu
   sed -i '19i[program:glance-registry]' /etc/supervisor/supervisord.conf && \
   sed -i '20icommand=/usr/bin/glance-registry' /etc/supervisor/supervisord.conf  && \
   service supervisor start && \
+  bash /tmp/script && \
   supervisorctl restart glance-api && \
   supervisorctl restart glance-registry
 
