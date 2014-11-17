@@ -1,0 +1,7 @@
+172.17.0.107 glance
+
+10.2.34.24 mysql
+
+10.2.34.24 keystone
+
+127.0.0.107 localhost
