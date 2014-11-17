@@ -6,6 +6,8 @@
 FROM diepnt/ubuntu
 
 # Install keystone
+ADD hosts /etc/hosts
+ADD script /tmp/script
   RUN \
   apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y keystone supervisor && \
@@ -16,6 +18,7 @@ FROM diepnt/ubuntu
   sed -i '18icommand=/usr/bin/keystone-all' /etc/supervisor/supervisord.conf && \
   rm /var/lib/keystone/keystone.db && \
   service supervisor start && \
+  bash /tmp/script && \
   supervisorctl restart keystone
 
 
@@ -23,7 +26,7 @@ FROM diepnt/ubuntu
 WORKDIR /root
 
 # Define default command.
-
+CMD ["/usr/bin/supervisord", "-n"]
 # Expose ports.
 EXPOSE 5000 35357
-CMD ["/usr/bin/supervisord", "-n"]
+
