@@ -16,7 +16,7 @@ FROM diepnt/ubuntu
   sed -i '18icommand=/usr/bin/keystone-all' /etc/supervisor/supervisord.conf && \
   rm /var/lib/keystone/keystone.db && \
   service supervisor start && \
-  supervisorctl restart keystone && \
+  supervisorctl restart keystone
 
 
 # Define working directory.
