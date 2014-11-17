@@ -10,7 +10,7 @@ ADD hosts /etc/hosts
 ADD script /tmp/script
   RUN \
   apt-get update && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y keystone supervisor && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y keystone rabbitmq-server supervisor && \
   sed -i '609iconnection = mysql://keystone:KEYSTONE_DBPASS@mysql/keystone'  /etc/keystone/keystone.conf && \
   sed -i '14iadmin_token = ADMIN_TOKEN' /etc/keystone/keystone.conf  && \
   sed -i '15ilog_dir = /var/log/keystone' /etc/keystone/keystone.conf  && \
@@ -28,5 +28,5 @@ WORKDIR /root
 # Define default command.
 CMD ["/usr/bin/supervisord", "-n"]
 # Expose ports.
-EXPOSE 5000 35357
+EXPOSE 5000 35357 5672
 
